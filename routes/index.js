@@ -12,7 +12,7 @@ module.exports = router;
 
 
 var mongoose = require('mongoose');
-var passport require('passport');
+var passport = require('passport');
 var jwt = require('express-jwt');
 
 //JWT authentication middleware
@@ -175,7 +175,7 @@ router.post('/login', function (req, res, next) {
         }
         if (user) {
             return res.json({
-                token: user.generateJWT();
+                token: user.generateJWT()
             });
         } else {
             return res.status(401).json(info);

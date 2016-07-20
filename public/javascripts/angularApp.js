@@ -21,6 +21,28 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
             }]
         }
     });
+    $stateProvider.state('login', {
+        url: '/login',
+        templateUrl: '/login.html',
+        controller: 'AuthCtrl',
+        onEnter: ['$state', 'auth', function ($state, auth) {
+            if (auth.isLoggedIn()) {
+                $state.go('home');
+            }
+        }]
+    });
+
+    $stateProvider.state('register', {
+        url: '/register',
+        templateUrl: '/register.html',
+        controller: 'AuthCtrl',
+        onEnter: ['$state', 'auth', function ($state, auth) {
+            if (auth.isLoggedIn()) {
+                $state.go('home');
+            }
+        }]
+    })
+
     $urlRouterProvider.otherwise('home');
 }])
 
@@ -77,6 +99,65 @@ app.factory('posts', ['$http', function ($http) {
     return o;
 }])
 
+app.factory('auth', ['$http', '$window', function ($http, $window) {
+    var auth = {};
+
+    //save JWT to local storage
+    auth.saveToken = function (token) {
+        $window.localStorage['zeddit-token'] = token;
+    };
+
+    //fetch JWT from local storage
+    auth.getToken = function () {
+        return $window.localStorage['zeddit-token'];
+    };
+
+    //check if user is logged in by checking for a unexpired JWT
+    auth.isLoggedIn = function () {
+        var token = auth.getToken();
+
+        if (token) {
+            var payload = JSON.parse($window.atob(token.split('.')[1]));
+            return payload.exp > Date.now() / 1000;
+        } else {
+            return false;
+        }
+    };
+
+    //get username of a user if they are logged in
+    auth.currentUser = function () {
+        if (auth.isLoggedIn()) {
+            var token = auth.getToken();
+            var payload = JSON.parse($window.atob(token.split('.')[1]));
+
+            return payload.username;
+        }
+    };
+
+    //register and login as new user
+    auth.register = function (user) {
+        return $http.post('/register', user)
+            .success(function (data) {
+                auth.saveToken(data.token);
+            });
+    };
+
+    //login in as user
+    auth.login = function (user) {
+        return $http.post('/login', user)
+            .success(function (data) {
+                auth.saveToken(data.token);
+            });
+    };
+
+    //logout the user
+    auth.logout = function () {
+        $window.localStorage.removeItem('zeddit-token');
+    };
+
+    return auth;
+}])
+
 
 app.controller('MainCtrl', ['$scope', 'posts', function ($scope, posts) {
     $scope.test = 'Hello World!'
@@ -125,4 +206,31 @@ app.controller('PostsCtrl', ['$scope', '$location', 'posts', 'post', '$log', fun
         posts.upvoteComment(post, comment);
     }
 
-}])
+}]);
+
+app.controller('AuthCtrl', ['$scope', '$state', 'auth', function ($scope, $state, auth) {
+
+    $scope.user = {};
+
+    $scope.register = function () {
+        auth.register($scope.user).error(function (error) {
+            $scope.error = error;
+        }).then(function () {
+            $state.go('home');
+        });
+    };
+
+    $scope.login = function () {
+        auth.login($scope.user).error(function (error) {
+            $scope.error = error;
+        }).then(function () {
+            $state.go('home');
+        });
+    };
+}]);
+
+app.controller('NavCtrl', ['$scope', 'auth', function ($scope, auth) {
+    $scope.isLoggedIn = auth.isLoggedIn;
+    $scope.currentUser = auth.currentUser;
+    $scope.logout = auth.logout();
+}]);
