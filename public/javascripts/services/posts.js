@@ -33,11 +33,7 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
 
     //upvote a post
     o.upvote = function (post) {
-        return $http.put('/posts/' + post._id + '/upvote', null, {
-                headers: {
-                    Authorization: 'Bearer ' + auth.getToken()
-                }
-            })
+        return $http.put('/posts/' + post._id + '/upvote', null, {})
             .success(function (data) {
                 post.upvotes += 1;
             });
@@ -45,11 +41,7 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
 
     //downvote a post
     o.downvote = function (post) {
-        return $http.put('/posts/' + post._id + '/downvote', null, {
-                headers: {
-                    Authorization: 'Bearer ' + auth.getToken()
-                }
-            })
+        return $http.put('/posts/' + post._id + '/downvote', null, {})
             .success(function (data) {
                 post.upvotes -= 1;
             });
@@ -66,11 +58,7 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
 
     //upvote a comment
     o.upvoteComment = function (post, comment) {
-        return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {
-                headers: {
-                    Authorization: 'Bearer ' + auth.getToken()
-                }
-            })
+        return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote', null, {})
             .success(function (data) {
                 comment.upvotes += 1;
             });
@@ -78,11 +66,7 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
 
     //downvote a comment
     o.downvoteComment = function (post, comment) {
-        return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/downvote', null, {
-                headers: {
-                    Authorization: 'Bearer ' + auth.getToken()
-                }
-            })
+        return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/downvote', null, {})
             .success(function (data) {
                 comment.upvotes -= 1;
             });

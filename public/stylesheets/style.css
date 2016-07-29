@@ -3,6 +3,16 @@ body {
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.navbar-btn {
+    margin-right: 0.25em;
+    margin-left: 0.25em;
+}
+
+.navbar {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
 a {
     color: #00B7FF;
 }
