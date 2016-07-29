@@ -1,11 +1,30 @@
 body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: ghostwhite;
 }
 
 .navbar-btn {
     margin-right: 0.5em;
     margin-left: 0.5em;
+}
+
+.navbar-text {
+    color: white !important;
+}
+
+.page-header {
+    background: white;
+    padding: 0.5em 1em;
+}
+
+.page-header > button {
+    position: relative;
+    right: -35em;
+}
+
+.panel-body {
+    padding-top: 0.5em;
 }
 
 
@@ -23,6 +42,10 @@ body {
 .post > .voting {
     display: inline-block;
     font-size: 1.5em;
+}
+
+.comment {
+    padding: 0 1em;
 }
 
 .comment > .voting {

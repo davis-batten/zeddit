@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var PostSchema = new mongoose.Schema({
     title: String,
     link: String,
+    text: String,
     author: String,
     upvotes: {
         type: Number,

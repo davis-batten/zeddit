@@ -1,9 +1,15 @@
 <a class="btn btn-default" href="#/home">Return</a>
-<div class="page-header">
-    <h3>
-        <a ng-show="post.link" href="{{post.link}}" target="_blank">{{post.title}}</a>
-        <span ng-hide="post.link">{{post.title}}</span>
-    </h3>
+<br>
+<br>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h3>
+            <a ng-show="post.link" href="{{post.link}}" target="_blank">{{post.title}}</a>
+            <span ng-hide="post.link">{{post.title}}</span>
+        </h3>
+        <div class="well" ng-hide="{{post.text == null}}">{{post.text}}</div>
+        <p>Posted by <span class="text-info"><b>{{post.author}}</b></span></p>
+    </div>
 </div>
 <div class="list-group">
     <div ng-repeat="comment in post.comments | orderBy: '-upvotes'" class="list-group-item comment">
@@ -16,7 +22,8 @@
         </div>
         &nbsp;
         <div class="comment-text">
-            <p>{{comment.body}} -- <strong>{{comment.author}}</strong></p>
+            <p>{{comment.body}} -- <b ng-class="{'text-info':comment.author==post.author}">{{comment.author}}</b>
+            </p>
         </div>
 
     </div>

@@ -46,7 +46,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
     $urlRouterProvider.otherwise('home');
 }])
 
-app.controller('MainCtrl', ['$scope', 'posts', 'auth', function ($scope, posts, auth) {
+app.controller('MainCtrl', ['$scope', '$window', 'posts', 'auth', function ($scope, $window, posts, auth) {
     $scope.test = 'Hello World!'
 
     $scope.posts = posts.posts;
@@ -57,10 +57,12 @@ app.controller('MainCtrl', ['$scope', 'posts', 'auth', function ($scope, posts, 
         }
         posts.create({
             title: $scope.title,
-            link: $scope.link
+            link: $scope.link,
+            text: $scope.text
         });
         $scope.title = '';
         $scope.link = '';
+        $scope.text = '';
     };
 
     $scope.upvote = function (post) {
@@ -72,6 +74,14 @@ app.controller('MainCtrl', ['$scope', 'posts', 'auth', function ($scope, posts, 
     }
 
     $scope.isLoggedIn = auth.isLoggedIn;
+
+    $scope.open = function (post) {
+        $window.location.href = "#/posts/" + post._id;
+    }
+
+    $scope.reload = function () {
+        $window.location.reload();
+    }
 
 }]);
 
