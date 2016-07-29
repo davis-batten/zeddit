@@ -26,7 +26,7 @@
 <body ng-app="zeddit" ng-controller="MainCtrl">
 
     <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav ">
             <li ng-show="isLoggedIn()">
                 <p class="navbar-text">{{ currentUser() }}</p>
             </li>
@@ -41,7 +41,6 @@
             </li>
         </ul>
     </nav>
-
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <!-- Render views -->

@@ -1,5 +1,4 @@
 body {
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background: ghostwhite;
 }
@@ -16,6 +15,7 @@ body {
 .page-header {
     background: white;
     padding: 0.5em 1em;
+    margin: 1em 0;
 }
 
 .page-header > button {
