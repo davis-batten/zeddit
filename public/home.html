@@ -13,8 +13,8 @@
             <span class="glyphicon glyphicon-chevron-down downvote" ng-click="downvote(post)"></span>
         </div>
         <div id="post-text">
-            <h4 ng-show="post.link"><a href="{{post.link}}">{{post.title}}</a></h4>
-            <h4 ng-hide="post.link"><span>{{post.title}}"</span></h4>
+            <h4 ng-show="post.link"><a href="{{post.link}}" target="_blank">{{post.title}}</a></h4>
+            <h4 ng-hide="post.link"><span>{{post.title}}</span></h4>
             <p>
                 <span ng-show="post.author"> posted by <strong>{{post.author}}</strong></span> &nbsp;
                 <span><a href="#/posts/{{post._id}}">Comments</a>
