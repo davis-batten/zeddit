@@ -1,18 +1,18 @@
-<div class="page-header ">
-    <h1>Zeddit</h1>
+<div class="page-header">
+    <img src="images/zeddit_logo.png" height="80">
 </div>
 
-<div ng-show="error " class="alert alert-danger row ">
+<div ng-show="error" class="alert alert-danger row">
     <span>{{error.message}}</span>s
 </div>
 
-<form ng-submit="login() ">
+<form ng-submit="login()">
     <h3>Login</h3>
-    <div class="form-group ">
-        <input type="text " class="form-control " placeholder="Username " ng-model="user.username ">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" ng-model="user.username">
     </div>
-    <div class="form-group ">
-        <input type="password " class="form-control " placeholder="Password " ng-model="user.password ">
+    <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
     </div>
-    <button type="submit " class="btn btn-primary ">Login</button>
+    <button type="submit" class="btn btn-primary">Login</button>
 </form>

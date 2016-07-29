@@ -1,32 +1,32 @@
-<a class="btn btn-default " href="#/home ">Return</a>
-<div class="page-header ">
+<a class="btn btn-default href=" #/home>Return</a>
+<div class="page-header>
     <h3>
-        <a ng-show="post.link " href="{{post.link}} ">{{post.title}}</a>
-        <span ng-hide="post.link ">{{post.title}}</span>
+        <a ng-show=" post.link href="{{post.link}}>{{post.title}}</a>
+        <span ng-hide=" post.link>{{post.title}}</span>
     </h3>
 </div>
-<div class="list-group ">
-    <div ng-repeat="comment in post.comments | orderBy: '-upvotes' " class="list-group-item ">
-        <div id="voting ">
-            <span class=" glyphicon glyphicon-chevron-up upvote " ng-click="upvote(comment) "></span>
+<div class="list-group>
+    <div ng-repeat=" comment in post.comments | orderBy: '-upvotes' class="list-group-item>
+        <div id=" voting>
+    <span class=" glyphicon glyphicon-chevron-up upvote ng-click=" upvote(comment)></span>
+    <br>
+    <span class="voteCount>{{comment.upvotes}}</span>
             <br>
-            <span class="voteCount ">{{comment.upvotes}}</span>
-            <br>
-            <span class="glyphicon glyphicon-chevron-down downvote " ng-click="downvote(comment) "></span>
+            <span class=" glyphicon glyphicon-chevron-down downvote ng-click="downvote(comment)></span>
         </div>
         -- by {{comment.author}} -- {{comment.body}}
     </div>
 </div>
 
-<form ng-submit="addComment() " ng-show="isLoggedIn() ">
+<form ng-submit=" addComment() ng-show="isLoggedIn()>
     <h3>Add a new comment</h3>
-    <div class="form-group ">
-        <input type="text " class="form-control " placeholder="Comment " ng-model="body ">
-    </div>
-    <button type="submit " class="btn btn-primary ">Post</button>
+    <div class=" form-group>
+    <input type="text class=" form-control placeholder="Comment ng-model=" body>
+</div>
+<button type="submit class=" btn btn-primary>Post</button>
 </form>
 
-<div ng-hide="isLoggedIn() ">
-    <h3> You need to <a href="/#/login ">Login</a> or <a href="/#/register ">Register</a> before you can
+<div ng-hide="isLoggedIn()>
+    <h3> You need to <a href=" /#/login>Login</a> or <a href="/#/register>Register</a> before you can
             comment on a post.</h3>
 </div>
