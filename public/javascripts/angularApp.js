@@ -63,8 +63,12 @@ app.controller('MainCtrl', ['$scope', 'posts', 'auth', function ($scope, posts, 
         $scope.link = '';
     };
 
-    $scope.incrementUpvotes = function (post) {
+    $scope.upvote = function (post) {
         posts.upvote(post);
+    }
+
+    $scope.downvote = function (post) {
+        posts.downvote(post);
     }
 
     $scope.isLoggedIn = auth.isLoggedIn;

@@ -1,8 +1,37 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+.post {}
+
+.post:hover {
+    background-color: whitesmoke;
+}
+
+#voting {
+    display: inline-block;
+    font-size: 1.5em;
+}
+
+#post-text {
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+}
+
+.upvote:hover {
+    color: lightgreen;
+}
+
+.voteCount {
+    margin-left: 5px;
+}
+
+.downvote:hover {
+    color: lightcoral;
 }

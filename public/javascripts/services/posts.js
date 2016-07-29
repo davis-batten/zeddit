@@ -43,6 +43,18 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
             });
     };
 
+    //downvote a post
+    o.downvote = function (post) {
+        return $http.put('/posts/' + post._id + '/downvote', null, {
+                headers: {
+                    Authorization: 'Bearer ' + auth.getToken()
+                }
+            })
+            .success(function (data) {
+                post.upvotes -= 1;
+            });
+    };
+
     //add a new comment to a post
     o.addComment = function (id, comment) {
         return $http.post('/posts/' + id + '/comments', comment, {
@@ -61,6 +73,18 @@ app.factory('posts', ['$http', 'auth', function ($http, auth) {
             })
             .success(function (data) {
                 comment.upvotes += 1;
+            });
+    };
+
+    //downvote a comment
+    o.downvoteComment = function (post, comment) {
+        return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/downvote', null, {
+                headers: {
+                    Authorization: 'Bearer ' + auth.getToken()
+                }
+            })
+            .success(function (data) {
+                comment.upvotes -= 1;
             });
     };
 
