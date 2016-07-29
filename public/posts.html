@@ -6,15 +6,19 @@
     </h3>
 </div>
 <div class="list-group">
-    <div ng-repeat="comment in post.comments | orderBy: '-upvotes'" class="list-group-item">
-        <div id="voting">
+    <div ng-repeat="comment in post.comments | orderBy: '-upvotes'" class="list-group-item comment">
+        <div class="voting">
             <span class="glyphicon glyphicon-chevron-up upvote" ng-click="upvote(comment)"></span>
             <br>
             <span class="voteCount">{{comment.upvotes}}</span>
             <br>
             <span class="glyphicon glyphicon-chevron-down downvote" ng-click="downvote(comment)"></span>
         </div>
-        -- by {{comment.author}} -- {{comment.body}}
+        &nbsp;
+        <div class="comment-text">
+            <p>{{comment.body}} -- <strong>{{comment.author}}</strong></p>
+        </div>
+
     </div>
 </div>
 

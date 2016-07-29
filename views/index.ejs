@@ -17,6 +17,9 @@
     <script src="/javascripts/services/auth.js"></script>
     <script src="/javascripts/services/posts.js"></script>
 
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/sandstone/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/stylesheets/style.css" rel="stylesheet" />
 </head>
 
@@ -25,24 +28,16 @@
     <nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
         <ul class="nav navbar-nav">
             <li ng-show="isLoggedIn()">
-                <p class="navbar-text">
-                    <span>{{ currentUser() }}</span>
-                </p>
+                <p class="navbar-text">{{ currentUser() }}</p>
             </li>
             <li ng-show="isLoggedIn()">
-                <p class="navbar-btn">
-                    <a href="" ng-click="logout()" class="btn btn-default">Logout</a>
-                </p>
+                <a href="" ng-click="logout()">Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
             </li>
             <li ng-hide="isLoggedIn()">
-                <p class="navbar-btn">
-                    <a href="#/login" class="btn btn-default">Login</a>
-                </p>
+                <a href="#/login">Login &nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
             </li>
             <li ng-hide="isLoggedIn()">
-                <p class="navbar-btn">
-                    <a href="#/register" class="btn btn-primary">Register</a>
-                </p>
+                <a href="#/register">Register</a>
             </li>
         </ul>
     </nav>

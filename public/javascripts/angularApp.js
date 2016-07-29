@@ -78,5 +78,5 @@ app.controller('MainCtrl', ['$scope', 'posts', 'auth', function ($scope, posts, 
 app.controller('NavCtrl', ['$scope', 'auth', function ($scope, auth) {
     $scope.isLoggedIn = auth.isLoggedIn;
     $scope.currentUser = auth.currentUser;
-    $scope.logout = auth.logout();
+    $scope.logout = auth.logout;
 }]);

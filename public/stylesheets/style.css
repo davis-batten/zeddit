@@ -4,18 +4,15 @@ body {
 }
 
 .navbar-btn {
-    margin-right: 0.25em;
-    margin-left: 0.25em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
 }
 
-.navbar {
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-}
 
-a {
-    color: #00B7FF;
-}
+/*
+.btn {
+    padding: 0.625em 1.25em;
+}*/
 
 .post {}
 
@@ -23,19 +20,36 @@ a {
     background-color: whitesmoke;
 }
 
-#voting {
+.post > .voting {
     display: inline-block;
     font-size: 1.5em;
 }
 
-#post-text {
+.comment > .voting {
+    display: inline-block;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+.post-text {
     vertical-align: top;
     position: relative;
     display: inline-block;
 }
 
+.post-text > p > a:hover {
+    text-decoration: none !important;
+}
+
+.comment-text {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    line-height: 4em;
+}
+
 .upvote:hover {
-    color: lightgreen;
+    color: #93C54B;
 }
 
 .voteCount {
@@ -43,5 +57,5 @@ a {
 }
 
 .downvote:hover {
-    color: lightcoral;
+    color: #D9534F;
 }

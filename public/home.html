@@ -4,21 +4,20 @@
 
 <div class="list-group">
     <div class="list-group-item post" ng-repeat="post in posts | orderBy: '-upvotes'">
-        <div id="voting">
-            <span class="glyphicon glyphicon-chevron-up upvote" ng-click="upvote(post)">
-    </span>
+        <div class="voting">
+            <span class="glyphicon glyphicon-chevron-up upvote" ng-click="upvote(post)"></span>
             <br>
             <span class="voteCount">{{post.upvotes}}</span>
             <br>
             <span class="glyphicon glyphicon-chevron-down downvote" ng-click="downvote(post)"></span>
         </div>
-        <div id="post-text">
+        <div class="post-text">
             <h4 ng-show="post.link"><a href="{{post.link}}" target="_blank">{{post.title}}</a></h4>
             <h4 ng-hide="post.link"><span>{{post.title}}</span></h4>
             <p>
                 <span ng-show="post.author"> posted by <strong>{{post.author}}</strong></span> &nbsp;
-                <span><a href="#/posts/{{post._id}}">Comments</a>
-                </span>
+                <a href="#/posts/{{post._id}}">Comments&nbsp;
+                    <span class="glyphicon glyphicon-comment"></span>&nbsp;{{post.comments.length}} </a>
             </p>
 
         </div>
