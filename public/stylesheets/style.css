@@ -3,6 +3,10 @@ body {
     background: ghostwhite;
 }
 
+.navbar .nav>li>a {
+    font-size: 1.25em;
+}
+
 .navbar-btn {
     margin-right: 0.5em;
     margin-left: 0.5em;
@@ -10,6 +14,7 @@ body {
 
 .navbar-text {
     color: white !important;
+    font-size: 1.25em;
 }
 
 .page-header {
@@ -58,6 +63,13 @@ body {
     vertical-align: top;
     position: relative;
     display: inline-block;
+}
+
+@media screen and (max-width: 1046px) {
+    .post-text {
+        max-width: 570px;
+        background: skyblue;
+    }
 }
 
 .post-text > p > a:hover {
